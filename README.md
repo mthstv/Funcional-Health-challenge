@@ -27,7 +27,8 @@ docker-compose exec app php artisan migrate
 ```
 O app será levantado na seguinte url: http://localhost:8080
 
-Rodar os testes
+
+Execute o seguinte comando para rodar os testes:
 ```
 docker-compose exec app vendor/bin/phpunit
 ```
