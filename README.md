@@ -4,7 +4,7 @@ GraphQL + Laravel challenge para Funcional Health e também para treinamento pro
 
 Essa foi minha primeira vez utilizando GraphQL, já possuia experiência com REST e foi muito interessante experimentar essa linguagem que está crescendo muito. 
 
-Utilizei o [wrapper do rebing](https://github.com/rebing/graphql-laravel) para fazer a integração, utilizei o Lumen para manter a API simples e MySQL.
+Utilizei o Lumen e o [wrapper do rebing](https://github.com/rebing/graphql-laravel) para fazer a integração com o GraphQL.
 
 Utilizei também Scripts do Docker para containers de PHP 7.4, nginx e MySQL. 
 
