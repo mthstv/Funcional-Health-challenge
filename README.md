@@ -32,3 +32,5 @@ Execute o seguinte comando para rodar os testes:
 ```
 docker-compose exec app vendor/bin/phpunit
 ```
+
+Gostaria de agradecer mais uma vez pela oportunidade e pelo aprendizado que tive ao realizar este desafio. =)
