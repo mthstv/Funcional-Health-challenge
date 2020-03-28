@@ -9,19 +9,18 @@ use App\Models\Conta;
 use GraphQL\Type\Definition\ResolveInfo;
 use GraphQL\Type\Definition\Type;
 use Rebing\GraphQL\Support\Query;
-use Rebing\GraphQL\Support\SelectFields;
-use Rebing\GraphQL\Support\Facades\GraphQL;
+use GraphQL\Error\Error;
 
-class ContaQuery extends Query
+class SaldoQuery extends Query
 {
     protected $attributes = [
-        'name' => 'Conta',
-        'description' => 'Busca todas ou somente uma conta'
+        'name' => 'Saldo',
+        'description' => 'Exibe o saldo de uma conta'
     ];
 
     public function type(): Type
     {
-        return Type::listOf(GraphQL::type('conta'));
+        return Type::int();
     }
 
     public function args(): array
@@ -29,7 +28,7 @@ class ContaQuery extends Query
         return [
             'conta' => [
                 'name' => 'conta',
-                'type' => Type::int()
+                'type' => Type::nonNull(Type::int())
             ]
         ];
     }
@@ -37,9 +36,12 @@ class ContaQuery extends Query
     public function resolve($root, $args, $context, ResolveInfo $resolveInfo, Closure $getSelectFields)
     {
         if (isset($args['conta'])) {
-            return Conta::where('conta', $args['conta'])->get();
+            $conta = Conta::where('conta', $args['conta'])->first();
+            if ($conta) {
+                return $conta->saldo;
+            } else {
+                return new Error('Conta não encontrada');
+            }
         }
-
-        return Conta::all();
     }
 }

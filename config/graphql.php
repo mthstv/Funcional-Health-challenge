@@ -101,11 +101,14 @@ return [
     'schemas' => [
         'default' => [
             'query' => [
-                'contas' => App\GraphQL\Queries\ContaQuery::class
-                // 'example_query' => ExampleQuery::class,
+                'contas' => App\GraphQL\Queries\ContaQuery::class,
+                'saldo' => App\GraphQL\Queries\SaldoQuery::class,
+                'movimentacao' => App\GraphQL\Queries\MovimentacaoQuery::class,
             ],
             'mutation' => [
-                'createConta' => App\GraphQL\Mutations\CreateContaMutation::class
+                'criarConta' => App\GraphQL\Mutations\CriarContaMutation::class,
+                'depositar' => App\GraphQL\Mutations\DepositoMutation::class,
+                'sacar' => App\GraphQL\Mutations\SaqueMutation::class,
             ],
             'middleware' => [],
             'method' => ['get', 'post'],
@@ -115,7 +118,8 @@ return [
     // The types available in the application. You can then access it from the
     // facade like this: GraphQL::type('user')
     'types' => [
-        'conta' => App\GraphQL\Types\ContaType::class
+        'conta' => App\GraphQL\Types\ContaType::class,
+        'movimentacao' => App\GraphQL\Types\MovimentacaoType::class
     ],
 
     // The types will be loaded on demand. Default is to load all types on each request

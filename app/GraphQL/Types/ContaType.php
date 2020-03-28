@@ -32,10 +32,12 @@ class ContaType extends GraphQLType
                 'description' => 'O saldo atual da conta'
             ],
             'created_at' => [
-                'type' => Type::string()
+                'type' => Type::string(),
+                'description' => 'Data de criação da conta'
             ],
             'updated_at' => [
-                'type' => Type::string()
+                'type' => Type::string(),
+                'description' => 'Data de atualização da conta'
             ]
         ];
     }

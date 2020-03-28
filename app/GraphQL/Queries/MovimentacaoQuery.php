@@ -5,23 +5,23 @@ declare(strict_types=1);
 namespace App\GraphQL\Queries;
 
 use Closure;
-use App\Models\Conta;
+use App\Models\AccountLog;
 use GraphQL\Type\Definition\ResolveInfo;
 use GraphQL\Type\Definition\Type;
 use Rebing\GraphQL\Support\Query;
 use Rebing\GraphQL\Support\SelectFields;
 use Rebing\GraphQL\Support\Facades\GraphQL;
 
-class ContaQuery extends Query
+class MovimentacaoQuery extends Query
 {
     protected $attributes = [
-        'name' => 'Conta',
-        'description' => 'Busca todas ou somente uma conta'
+        'name' => 'Movimentacao',
+        'description' => 'Exibe o histórico de movimentação/criação de uma ou de todas as contas'
     ];
 
     public function type(): Type
     {
-        return Type::listOf(GraphQL::type('conta'));
+        return Type::listOf(GraphQL::type('movimentacao'));
     }
 
     public function args(): array
@@ -37,9 +37,9 @@ class ContaQuery extends Query
     public function resolve($root, $args, $context, ResolveInfo $resolveInfo, Closure $getSelectFields)
     {
         if (isset($args['conta'])) {
-            return Conta::where('conta', $args['conta'])->get();
+            return AccountLog::where('conta', $args['conta'])->get();
         }
 
-        return Conta::all();
+        return AccountLog::all();
     }
 }
