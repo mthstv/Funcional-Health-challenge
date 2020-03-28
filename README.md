@@ -6,7 +6,7 @@ Essa foi minha primeira vez utilizando GraphQL, já possuia experiência com RES
 
 Utilizei o Lumen e o [wrapper do rebing](https://github.com/rebing/graphql-laravel) para fazer a integração com o GraphQL.
 
-Utilizei também Scripts do Docker para containers de PHP 7.4, nginx e MySQL. 
+Usei scripts do Docker para containers de PHP 7.4, nginx e MySQL. 
 
 
 # Documentação
