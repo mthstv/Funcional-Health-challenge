@@ -2,8 +2,7 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Models\User;
-use Faker\Generator as Faker;
+use App\Models\Conta;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,9 +15,8 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(User::class, function (Faker $faker) {
+$factory->define(Conta::class, function () {
     return [
-        'name' => $faker->name,
-        'email' => $faker->email,
+        'conta' => rand(10000, 99999)
     ];
 });

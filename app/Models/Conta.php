@@ -32,8 +32,8 @@ class Conta extends Model
     /**
      * Get the logs of a account
      */
-    public function logs()
+    public function movimentacoes()
     {
-        return $this->hasMany('App\Models\AccountLogs');
+        return $this->hasMany('App\Models\AccountLog');
     }
 }

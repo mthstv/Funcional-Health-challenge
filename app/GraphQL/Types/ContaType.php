@@ -7,6 +7,7 @@ namespace App\GraphQL\Types;
 use App\Models\Conta;
 use Rebing\GraphQL\Support\Type as GraphQLType;
 use GraphQL\Type\Definition\Type;
+use Rebing\GraphQL\Support\Facades\GraphQL;
 
 class ContaType extends GraphQLType
 {
@@ -30,6 +31,10 @@ class ContaType extends GraphQLType
             'saldo' => [
                 'type' => Type::nonNull(Type::int()),
                 'description' => 'O saldo atual da conta'
+            ],
+            'movimentacoes' => [
+                'type' => Type::listOf(GraphQL::type('movimentacao')),
+                'description' => 'Movimentações da conta'
             ],
             'created_at' => [
                 'type' => Type::string(),
