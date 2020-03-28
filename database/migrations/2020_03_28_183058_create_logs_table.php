@@ -17,6 +17,7 @@ class CreateLogsTable extends Migration
             $table->id();
             $table->bigInteger('conta_id')->unsigned();
             $table->foreign('conta_id')->references('id')->on('contas')->onDelete('cascade');
+            $table->integer('conta');
             $table->string('type', 50);
             $table->string('message', 255);
             $table->timestamps();

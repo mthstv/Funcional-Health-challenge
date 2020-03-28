@@ -14,4 +14,12 @@ class AccountLog extends Model
     protected $fillable = [
         'conta_id', 'type', 'message'
     ];
+
+    /**
+     * Get the account
+     */
+    public function conta()
+    {
+        return $this->belongsTo('App\Models\Conta');
+    }
 }

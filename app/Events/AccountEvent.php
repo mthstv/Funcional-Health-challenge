@@ -30,6 +30,7 @@ class AccountEvent extends Event
     {
         $log = new AccountLog();
         $log->conta_id = $conta->id;
+        $log->conta = $conta->conta;
         $log->type = 'CRIACAO';
         $log->message = "Conta de número $conta->conta criada com sucesso";
         $log->save();
@@ -39,6 +40,7 @@ class AccountEvent extends Event
     {
         $log = new AccountLog();
         $log->conta_id = $conta->id;
+        $log->conta = $conta->conta;
 
         if ($conta->getOriginal('saldo') > $conta->saldo) {
             $movimentacao = $conta->getOriginal('saldo') - $conta->saldo;

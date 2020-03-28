@@ -27,5 +27,13 @@ class Conta extends Model
 	    static::updated(function($conta) {
             Event::dispatch('conta.updated', $conta);
 	    });
-	}
+    }
+    
+    /**
+     * Get the logs of a account
+     */
+    public function logs()
+    {
+        return $this->hasMany('App\Models\AccountLogs');
+    }
 }
