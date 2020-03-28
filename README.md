@@ -25,7 +25,7 @@ Assim que os containers estiverem rodando, utilize o seguinte comando para execu
 ```
 docker-compose exec app php artisan migrate
 ```
-O app será levantado na url http://localhost
+O app será levantado na seguinte url: http://localhost:8080
 
 Rodar os testes
 ```
