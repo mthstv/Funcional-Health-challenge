@@ -11,6 +11,7 @@ use GraphQL\Type\Definition\Type;
 use Rebing\GraphQL\Support\Mutation;
 use Rebing\GraphQL\Support\SelectFields;
 use Rebing\GraphQL\Support\Facades\GraphQL;
+use GraphQL\Error\Error;
 
 class DepositoMutation extends Mutation
 {
@@ -49,10 +50,15 @@ class DepositoMutation extends Mutation
     public function resolve($root, $args, $context, ResolveInfo $resolveInfo, Closure $getSelectFields)
     {
         $conta = Conta::where('conta', $args['conta'])->first();
-        $conta->saldo += $args['valor'];
-        $conta->fill($args);
-        $conta->save();
+        if ($conta) {
+            $conta->saldo += $args['valor'];
+            $conta->fill($args);
+            $conta->save();
 
-        return $conta;
+            return $conta;
+        } else {
+            return new Error('Conta não encontrada');
+        }
+        
     }
 }

@@ -50,14 +50,19 @@ class SaqueMutation extends Mutation
     public function resolve($root, $args, $context, ResolveInfo $resolveInfo, Closure $getSelectFields)
     {
         $conta = Conta::where('conta', $args['conta'])->first();
-        if ($conta->saldo >= $args['valor']) {
-            $conta->saldo -= $args['valor'];
+        if ($conta) {
+            if ($conta->saldo >= $args['valor']) {
+                $conta->saldo -= $args['valor'];
+            } else {
+                return new Error('Saldo insuficiente');
+            }
+            $conta->fill($args);
+            $conta->save();
+    
+            return $conta;
         } else {
-            return new Error('Saldo insuficiente');
+            return new Error('Conta não encontrada');
         }
-        $conta->fill($args);
-        $conta->save();
 
-        return $conta;
     }
 }
