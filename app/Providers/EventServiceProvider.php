@@ -12,8 +12,11 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        \App\Events\ExampleEvent::class => [
-            \App\Listeners\ExampleListener::class,
+        'conta.created' => [
+            'App\Events\AccountEvent@contaCreated',
         ],
+        'conta.updated' => [
+            'App\Events\AccountEvent@contaUpdated',
+        ]
     ];
 }
