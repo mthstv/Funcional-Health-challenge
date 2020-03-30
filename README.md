@@ -8,6 +8,7 @@ Utilizei o Lumen e o [wrapper do rebing](https://github.com/rebing/graphql-larav
 
 Usei scripts do Docker para containers de PHP 7.4, nginx e MySQL. 
 
+O app está hospedado no Google Cloud Platform na url http://104.197.28.79
 
 # Documentação
 
@@ -32,6 +33,5 @@ Execute o seguinte comando para rodar os testes:
 ```
 docker-compose exec app vendor/bin/phpunit
 ```
-O app está hospedado também no Google Cloud Platform na url http://104.197.28.79
 
 Gostaria de agradecer mais uma vez pela oportunidade e pelo aprendizado que tive ao realizar este desafio. =)
