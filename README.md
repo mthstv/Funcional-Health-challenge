@@ -1,6 +1,6 @@
 # Funcional-Health-challenge
 
-GraphQL + Laravel challenge para Funcional Health e também para treinamento profissional.
+GraphQL + Laravel challenge para Funcional Health.
 
 Essa foi minha primeira vez utilizando GraphQL, já possuia experiência com REST e o aprendizado foi muito interessante.
 
