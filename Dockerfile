@@ -46,7 +46,7 @@ COPY ./entrypoint.sh /var/www
 
 # Copy existing application directory permissions
 COPY . /var/www
-RUN chown -R www:www /home/user/Projects/transpyle
+RUN chown -R www:www /var/www
 
 # Change current user to www
 USER www
