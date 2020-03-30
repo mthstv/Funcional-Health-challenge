@@ -31,18 +31,18 @@ class AccountMovimentationTest extends TestCase
             ])
         ]);
 
-        $fields = $this->graphql->mutate($query)->getData();
-        $this->graphql->assertGraphQlFields($fields, $query);
+        $newAccountFields = $this->graphql->mutate($query)->getData();
+        $this->graphql->assertGraphQlFields($newAccountFields, $query);
 
-        $conta = Conta::query()->where([
+        $novaConta = Conta::query()->where([
             'conta' => $params['conta'],
         ])->first();
 
-        $this->assertNotNull($conta);
-        $this->assertEquals($conta->conta, $this->accountNumber);
-        $this->assertEquals($conta->saldo, $fields['saldo']);
-        $this->assertEquals($fields['movimentacoes'][0]['message'], $conta->movimentacoes->first()->message);
-        dump($fields['movimentacoes'][0]['message']);
+        $this->assertNotNull($novaConta);
+        $this->assertEquals($novaConta->conta, $this->accountNumber);
+        $this->assertEquals($novaConta->saldo, $newAccountFields['saldo']);
+        $this->assertEquals($newAccountFields['movimentacoes'][0]['message'], $novaConta->movimentacoes->first()->message);
+        dump($newAccountFields['movimentacoes'][0]['message']);
 
         /* Depositing 10 to the account */
         $params = [
@@ -58,16 +58,16 @@ class AccountMovimentationTest extends TestCase
             ])
         ]);
 
-        $fields = $this->graphql->mutate($query)->getData();
-        $this->graphql->assertGraphQlFields($fields, $query);
+        $depositedAccountfields = $this->graphql->mutate($query)->getData();
+        $this->graphql->assertGraphQlFields($depositedAccountfields, $query);
 
-        $conta = Conta::query()->where([
+        $contaDepositada = Conta::query()->where([
             'conta' => $params['conta'],
         ])->first();
 
-        $this->assertEquals($conta->saldo, $fields['saldo']);
-        $this->assertEquals($fields['movimentacoes'][1]['message'], $conta->movimentacoes->last()->message);
-        dump($fields['movimentacoes'][1]['message']);
+        $this->assertEquals($contaDepositada->saldo, $depositedAccountfields['saldo']);
+        $this->assertEquals($depositedAccountfields['movimentacoes'][1]['message'], $contaDepositada->movimentacoes->last()->message);
+        dump($depositedAccountfields['movimentacoes'][1]['message']);
 
         /* Withdrawing 5 from the account */
         $params = [
@@ -83,18 +83,18 @@ class AccountMovimentationTest extends TestCase
             ])
         ]);
 
-        $fields = $this->graphql->mutate($query)->getData();
-        $this->graphql->assertGraphQlFields($fields, $query);
+        $withdrawAccountfields = $this->graphql->mutate($query)->getData();
+        $this->graphql->assertGraphQlFields($withdrawAccountfields, $query);
 
-        $conta = Conta::query()->where([
+        $contaSacada = Conta::query()->where([
             'conta' => $params['conta'],
         ])->first();
 
-        $this->assertNotNull($conta);
-        $this->assertEquals($conta->conta, $this->accountNumber);
-        $this->assertEquals($conta->saldo, $fields['saldo']);
-        $this->assertEquals($fields['movimentacoes'][2]['message'], $conta->movimentacoes->last()->message);
-        dump($fields['movimentacoes'][2]['message']);
+        $this->assertNotNull($contaSacada);
+        $this->assertEquals($contaSacada->conta, $this->accountNumber);
+        $this->assertEquals($contaSacada->saldo, $withdrawAccountfields['saldo']);
+        $this->assertEquals($withdrawAccountfields['movimentacoes'][2]['message'], $contaSacada->movimentacoes->last()->message);
+        dump($withdrawAccountfields['movimentacoes'][2]['message']);
 
         /* Checking current balance of the account */
         $params = [
@@ -105,13 +105,13 @@ class AccountMovimentationTest extends TestCase
 
         $saldo = $this->graphql->query($query)->getData();
 
-        $conta = Conta::query()->where([
+        $saldoConta = Conta::query()->where([
             'conta' => $params['conta'],
         ])->first();
 
-        $this->assertNotNull($conta);
-        $this->assertEquals($conta->conta, $this->accountNumber);
-        $this->assertEquals($conta->saldo, $saldo);
-        dump("Saldo atual: $conta->saldo");
+        $this->assertNotNull($saldoConta);
+        $this->assertEquals($saldoConta->conta, $this->accountNumber);
+        $this->assertEquals($saldoConta->saldo, $saldo);
+        dump("Saldo atual: $saldoConta->saldo");
     }
 }
