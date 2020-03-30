@@ -32,5 +32,6 @@ Execute o seguinte comando para rodar os testes:
 ```
 docker-compose exec app vendor/bin/phpunit
 ```
+O app está hospedado também no Google Cloud Platform na url http://104.197.28.79
 
 Gostaria de agradecer mais uma vez pela oportunidade e pelo aprendizado que tive ao realizar este desafio. =)
