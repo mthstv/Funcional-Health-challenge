@@ -6,6 +6,7 @@
     "type": "project",
     "require": {
         "php": "^7.2.5",
+        "goltzchristian/graphql-client-php": "^1.0",
         "laravel/lumen-framework": "^7.0",
         "rebing/graphql-laravel": "5.0.0-rc2"
     },
