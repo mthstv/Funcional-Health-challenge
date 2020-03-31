@@ -1,13 +1,14 @@
 # Funcional-Health-challenge
 
-GraphQL + Laravel challenge para Funcional Health e também para treinamento profissional.
+GraphQL + Laravel challenge para Funcional Health.
 
-Essa foi minha primeira vez utilizando GraphQL, já possuia experiência com REST e foi muito interessante experimentar essa linguagem que está crescendo muito. 
+Essa foi minha primeira vez utilizando GraphQL, já possuia experiência com REST e o aprendizado foi muito interessante.
 
 Utilizei o Lumen e o [wrapper do rebing](https://github.com/rebing/graphql-laravel) para fazer a integração com o GraphQL.
 
 Usei scripts do Docker para containers de PHP 7.4, nginx e MySQL. 
 
+O app está hospedado no Google Cloud Platform na url http://104.197.28.79
 
 # Documentação
 
@@ -32,6 +33,5 @@ Execute o seguinte comando para rodar os testes:
 ```
 docker-compose exec app vendor/bin/phpunit
 ```
-O app está hospedado também no Google Cloud Platform na url http://104.197.28.79
 
-Gostaria de agradecer mais uma vez pela oportunidade e pelo aprendizado que tive ao realizar este desafio. =)
+Gostaria de agradecer pela oportunidade e pelo aprendizado que tive ao realizar este desafio. =)
