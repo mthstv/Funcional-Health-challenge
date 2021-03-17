@@ -9,7 +9,9 @@
         "goltzchristian/graphql-client-php": "^1.0",
         "laravel/lumen-framework": "^7.0",
         "rebing/graphql-laravel": "5.0.0-rc2",
-        "symfony/http-foundation": "5.0.7"
+        "symfony/http-foundation": "5.0.7",
+        "symfony/http-kernel": "5.1.5",
+        "illuminate/database": "7.30.4"
     },
     "require-dev": {
         "fzaninotto/faker": "^1.9.1",
