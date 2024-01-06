@@ -8,7 +8,7 @@ Utilizei o Lumen e o [wrapper do rebing](https://github.com/rebing/graphql-larav
 
 Usei scripts do Docker para containers de PHP 7.4, nginx e MySQL. 
 
-O app está hospedado no Google Cloud Platform na url http://104.197.28.79
+~O app está hospedado no Google Cloud Platform na url http://104.197.28.79~ RIP
 
 # Documentação
 
